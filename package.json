@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0 --port 1011 --disable-host-check true",
     "build": "ng build --prod --named-chunks --output-hashing=media",
     "apk:build": "cordova build",
     "build:run": "ng build --configuration=app --named-chunks --output-hashing=media && cordova run",
@@ -59,6 +59,8 @@
     "plugins": {
       "cordova-plugin-whitelist": {}
     },
-    "platforms": []
+    "platforms": [
+      "android"
+    ]
   }
 }
