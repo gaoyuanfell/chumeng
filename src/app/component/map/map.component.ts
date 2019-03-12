@@ -27,29 +27,34 @@ export class MapComponent implements OnInit {
       address: '江苏省苏州市姑苏区平江街道平江历史街区',
       lnglat: [120.634486, 31.314001]
     },
-    {
-      address: '江苏省苏州市吴江区同里镇苏州同里古镇旅游区',
-      lnglat: [120.722983, 31.154527]
-    },
-    {
-      address: '江苏省苏州市昆山市周庄镇周庄古镇',
-      lnglat: [120.851109, 31.115334]
-    },
+    // {
+    //   address: '江苏省苏州市吴江区同里镇苏州同里古镇旅游区',
+    //   lnglat: [120.722983, 31.154527]
+    // },
+    // {
+    //   address: '江苏省苏州市昆山市周庄镇周庄古镇',
+    //   lnglat: [120.851109, 31.115334]
+    // },
     {
       address: '江苏省苏州市吴中区金鸡湖金鸡湖景区',
       lnglat: [120.698344, 31.311124]
     },
     {
       address: '江苏省苏州市吴中区月光码头步行街金鸡湖景区',
-      lnglat: [120.707259,31.320194]
+      lnglat: [120.707259, 31.320194]
+    },
+    {
+      address: '江苏省苏州市姑苏区观前街道观前街久泰商厦',
+      lnglat: [120.625678, 31.311214]
     },
   ]
 
   initMap() {
     this.aMap = new AMap.Map('container', {
+      resizeEnable: true,
       zoom: 11,//级别
       center: [116.397428, 39.90923],//中心点坐标
-      viewMode: '3D'//使用3D视图
+      // viewMode: '3D'//使用3D视图
     })
   }
 
@@ -61,16 +66,16 @@ export class MapComponent implements OnInit {
       'AMap.MapType',
       'AMap.Geolocation',
       'AMap.InfoWindow',
-      'AMap.AdvancedInfoWindow',
-    ], () => {
+    ], function() {
+      console.info('ok')
       // 在图面添加工具条控件，工具条控件集成了缩放、平移、定位等功能按钮在内的组合控件
       this.aMap.addControl(new AMap.ToolBar());
 
       // 在图面添加比例尺控件，展示地图在当前层级和纬度下的比例尺
-      // this.aMap.addControl(new AMap.Scale());
+      this.aMap.addControl(new AMap.Scale());
 
       // 在图面添加鹰眼控件，在地图右下角显示地图的缩略图
-      // this.aMap.addControl(new AMap.OverView({ isOpen: true }));
+      this.aMap.addControl(new AMap.OverView({ isOpen: true }));
 
       // 在图面添加类别切换控件，实现默认图层与卫星图、实施交通图层之间切换的控制
       this.aMap.addControl(new AMap.MapType());
@@ -83,27 +88,56 @@ export class MapComponent implements OnInit {
   markerInstance = []
 
   addMarker() {
-    // let infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
     this.markers.forEach((item) => {
       let m = new AMap.Marker({
         map: this.aMap,
-        position: item.lnglat
+        position: item.lnglat,
       })
       this.markerInstance.push(m);
+      let infoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -30), content: `<a href="androidamap://route?sourceApplication=softname&slat=${item.lnglat[0]}&slon=${item.lnglat[1]}&sname=当前位置&dlat=${this.positionLnglat.lat}&dlon=${this.positionLnglat.lng}&dname=目的地&dev=0&m=0&t=1&showType=1" style="padding:10px">${item.address}</a>` });
       AMap.event.addListener(m, 'click', (e) => {
-        let infowindow = new AMap.AdvancedInfoWindow({offset: new AMap.Pixel(0, -30), content: item.address})
-        infowindow.open(this.aMap, item.lnglat)
+        infoWindow.open(this.aMap, item.lnglat)
       })
+    })
+  }
+
+  geolocation() {
+    return new Promise((resolve, reject) => {
+      let geolocation = new AMap.Geolocation({
+        // 是否使用高精度定位，默认：true
+        enableHighAccuracy: true,
+        // 设置定位超时时间，默认：无穷大
+        timeout: 10000,
+        // 定位按钮的停靠位置的偏移量，默认：Pixel(10, 20)
+        buttonOffset: new AMap.Pixel(10, 20),
+        //  定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+        zoomToAccuracy: true,
+        //  定位按钮的排放位置,  RB表示右下
+        buttonPosition: 'RB'
+      })
+      geolocation.getCurrentPosition((status, result) => {
+        if (status == 'complete') {
+          resolve(result)
+        }else{
+          console.info(status)
+          reject(status)
+        }
+      });
     })
   }
 
   constructor() { }
 
+  positionLnglat
+
   ngOnInit() {
     this.initMap()
     this.addPlugin()
-    this.addMarker()
-    this.aMap.setFitView(this.markerInstance)
+    this.geolocation().then((res:any) => {
+      this.positionLnglat = res.position
+      this.addMarker()
+      this.aMap.setFitView(this.markerInstance)
+    })
   }
 
 }
