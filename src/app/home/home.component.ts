@@ -33,13 +33,21 @@ export class HomeComponent implements OnInit {
           detail:[
             `吃东西，睡觉`
           ]
+        },
+        {
+          thing: '08：53 到达苏州',
+          data: '2019-4-04 08:53',
+          detail:[
+            `到达住处 地址：待定`,
+            ``,
+          ]
         }
       ],
     },
     {
       title:'第二天',
       events:[
-        
+
       ]
     },
     {

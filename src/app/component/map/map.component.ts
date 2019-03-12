@@ -39,6 +39,10 @@ export class MapComponent implements OnInit {
       address: '江苏省苏州市吴中区金鸡湖金鸡湖景区',
       lnglat: [120.698344, 31.311124]
     },
+    {
+      address: '江苏省苏州市吴中区月光码头步行街金鸡湖景区',
+      lnglat: [120.707259,31.320194]
+    },
   ]
 
   initMap() {
