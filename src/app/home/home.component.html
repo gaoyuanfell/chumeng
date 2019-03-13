@@ -1,5 +1,4 @@
 <button mat-button [routerLink]="[ '/map']">Map</button>
-
 <mat-list>
   <ng-template ngFor [ngForOf]="list" let-item let-index="index">
     <h3 mat-subheader>{{item.title}}</h3>
@@ -18,5 +17,3 @@
     
   </ng-template>
 </mat-list>
-
-<app-map></app-map>
