@@ -4,11 +4,49 @@
   <meta charset="utf-8">
   <title>旅游行</title>
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.13&key=cca72e3e21736febbf596a86e25c63a5&plugin=AMap.ToolBar,AMap.Geolocation"></script>
+  <script>
+    // 手机适配
+    (function (_window) {
+      var docEl = _window.document.documentElement,
+        resizeEvt = 'orientationchange' in _window ? 'orientationchange' : 'resize';
+
+      function s() {
+        var clientWidth = docEl.clientWidth;
+        // 这边是 docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+        // 但是根据设计稿量的 还要再除以2 也就是750
+        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+      }
+      _window.addEventListener(resizeEvt, s, false);
+      s();
+    })(window);
+
+  </script>
 </head>
 <body>
   <app-root></app-root>
+  <script>
+    window.addEventListener = function () {
+      (window.EventTarget || Window).prototype.addEventListener.apply(this, arguments);
+    };
+    window.removeEventListener = function () {
+      (window.EventTarget || Window).prototype.removeEventListener.apply(this, arguments);
+    };
+    document.addEventListener = function () {
+      (window.EventTarget || Document).prototype.addEventListener.apply(this, arguments);
+    };
+    document.removeEventListener = function () {
+      (window.EventTarget || Document).prototype.removeEventListener.apply(this, arguments);
+    };
+
+  </script>
 </body>
 </html>
