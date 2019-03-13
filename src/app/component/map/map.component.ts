@@ -59,6 +59,12 @@ export class MapComponent implements OnInit {
   }
 
   addPlugin() {
+
+    // 在图面添加工具条控件，工具条控件集成了缩放、平移、定位等功能按钮在内的组合控件
+    this.aMap.addControl(new AMap.ToolBar());
+    // 在图面添加定位控件，用来获取和展示用户主机所在的经纬度位置
+    this.aMap.addControl(new AMap.Geolocation());
+
     AMap.plugin([
       'AMap.ToolBar',
       'AMap.Scale',
@@ -133,11 +139,11 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.initMap()
     this.addPlugin()
-    this.geolocation().then((res:any) => {
-      this.positionLnglat = res.position
-      this.addMarker()
-      this.aMap.setFitView(this.markerInstance)
-    })
+    // this.geolocation().then((res:any) => {
+    //   this.positionLnglat = res.position
+    //   this.addMarker()
+    //   this.aMap.setFitView(this.markerInstance)
+    // })
   }
 
 }
