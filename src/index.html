@@ -30,6 +30,7 @@
     })(window);
 
   </script>
+
 </head>
 <body>
   <app-root></app-root>
@@ -47,6 +48,11 @@
       (window.EventTarget || Document).prototype.removeEventListener.apply(this, arguments);
     };
 
+  </script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="assets/lib/vconsole.min.js"></script>
+  <script>
+    let vConsole = new VConsole();
   </script>
 </body>
 </html>

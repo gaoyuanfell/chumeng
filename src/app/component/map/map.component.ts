@@ -99,7 +99,7 @@ export class MapComponent implements OnInit {
         position: item.lnglat,
       })
       this.markerInstance.push(m);
-      let infoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -30), content: `<a href="androidamap://route?sourceApplication=softname&slat=${item.lnglat[0]}&slon=${item.lnglat[1]}&sname=当前位置&dlat=${this.positionLnglat.lat}&dlon=${this.positionLnglat.lng}&dname=目的地&dev=0&m=0&t=1&showType=1" style="padding:10px">${item.address}</a>` });
+      let infoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -30), content: `<a href="androidamap://route?sourceApplication=softname&slat=${this.positionLnglat.lat}&slon=${this.positionLnglat.lng}&sname=当前位置&dlat=${item.lnglat[1]}&dlon=${item.lnglat[0]}&dname=${item.address}&dev=0&m=0&t=1&showType=1" style="padding:10px">${item.address}</a>` });
       AMap.event.addListener(m, 'click', (e) => {
         infoWindow.open(this.aMap, item.lnglat)
       })
@@ -121,13 +121,16 @@ export class MapComponent implements OnInit {
         buttonPosition: 'RB'
       })
       geolocation.getCurrentPosition((status, result) => {
+        console.info(result)
         if (status == 'complete') {
           resolve(result)
         } else {
-          console.info(status)
           reject(status)
         }
       });
+
+      let number = geolocation.watchPosition()
+      console.info(number)
     })
   }
 

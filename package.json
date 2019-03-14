@@ -1,6 +1,6 @@
 {
-  "name": "helloworld",
-  "displayName": "HelloCordova",
+  "name": "com.yc.lvyou",
+  "displayName": "com.yc.lvyou",
   "version": "1.0.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",
@@ -9,6 +9,7 @@
     "start": "ng serve --host 0.0.0.0 --port 1011 --disable-host-check true",
     "build": "ng build --prod --named-chunks --output-hashing=media",
     "apk:build": "cordova build",
+    "apk:run": "cordova run",
     "build:run": "ng build --configuration=app --named-chunks --output-hashing=media && cordova run",
     "build:release": "ng build --configuration=app --named-chunks --output-hashing=media && cordova build --release",
     "test": "ng test",
@@ -28,6 +29,7 @@
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
     "cordova-android": "^7.1.4",
+    "cordova-plugin-ionic-webview": "^4.0.0",
     "cordova-plugin-whitelist": "^1.3.3",
     "core-js": "^2.5.4",
     "normalize.css": "^8.0.1",
@@ -60,7 +62,10 @@
   "license": "Apache-2.0",
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-ionic-webview": {
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+      }
     },
     "platforms": [
       "android"

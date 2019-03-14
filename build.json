@@ -2,7 +2,7 @@
   "android": {
     "release": {
       "keystore": "release-key.keystore",
-      "alias": "无忧速贷",
+      "alias": "旅游行",
       "storePassword": "gaoyuan",
       "password": "gaoyuan"
     }
