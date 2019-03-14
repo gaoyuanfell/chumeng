@@ -64,6 +64,7 @@ export class MapComponent implements OnInit {
     this.aMap.addControl(new AMap.ToolBar());
     // 在图面添加定位控件，用来获取和展示用户主机所在的经纬度位置
     this.aMap.addControl(new AMap.Geolocation());
+    
     // AMap.plugin([
     //   'AMap.ToolBar',
     //   'AMap.Scale',

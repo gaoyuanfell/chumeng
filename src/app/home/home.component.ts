@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
             {
               text: '休息下准备去玩咯',
               finish: false,
-            },,
+            },
             {
               text: '休息下准备去玩咯',
               finish: false,
