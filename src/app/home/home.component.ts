@@ -26,11 +26,7 @@ export class HomeComponent implements OnInit {
           data: '2019-4-04 06:30',
           detail:[
             {
-              text: '给媳妇煮一碗银耳莲子羹，吃完美美哒',
-              finish: false,
-            },
-            {
-              text: '带好媳妇早餐，还有火车上的物资',
+              text: '带好媳妇早餐，还有一碗银耳莲子羹，吃完美美哒',
               finish: false,
             },
             {
@@ -50,15 +46,15 @@ export class HomeComponent implements OnInit {
           ]
         },
         {
-          thing: '08：53 到达苏州',
+          thing: '08:53 到达苏州',
           data: '2019-4-04 08:53',
           detail:[
             {
-              text: '到达住处 地址：苏州团结桥地铁站-4口（壹公馆精品公寓），具体地址：苏州市姑苏区锦南巷77号姑苏生鲜南环市场B1层',
+              text: '座地铁四号线，北寺塔方向，人民南桥下地铁',
               finish: false,
             },
             {
-              text: '休息下准备去玩咯',
+              text: '到达住处 地址：苏州团结桥地铁站-4口（壹公馆精品公寓），具体地址：苏州市姑苏区锦南巷77号姑苏生鲜南环市场B1层',
               finish: false,
             },
             {
