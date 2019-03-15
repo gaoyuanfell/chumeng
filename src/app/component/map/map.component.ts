@@ -47,6 +47,11 @@ export class MapComponent implements OnInit {
       address: '江苏省苏州市姑苏区观前街道观前街久泰商厦',
       lnglat: [120.625678, 31.311214]
     },
+    {
+      address: '江苏省苏州市姑苏区吴门桥街道南环新村(南环东路小区北)南环新村二组团小区',
+      phone: '17186400373',
+      lnglat: [120.633333, 31.283277]
+    },
   ]
 
   initMap() {
@@ -64,7 +69,7 @@ export class MapComponent implements OnInit {
     this.aMap.addControl(new AMap.ToolBar());
     // 在图面添加定位控件，用来获取和展示用户主机所在的经纬度位置
     this.aMap.addControl(new AMap.Geolocation());
-    
+
     // AMap.plugin([
     //   'AMap.ToolBar',
     //   'AMap.Scale',
@@ -99,8 +104,19 @@ export class MapComponent implements OnInit {
         map: this.aMap,
         position: item.lnglat,
       })
+      m.setLabel({
+        //修改label相对于maker的位置
+        offset: new AMap.Pixel(0, 30),
+        content: `<a href="androidamap://route?sourceApplication=softname&slat=${this.positionLnglat.lat}&slon=${this.positionLnglat.lng}&sname=当前位置&dlat=${item.lnglat[1]}&dlon=${item.lnglat[0]}&dname=${item.address}&dev=0&m=0&t=1&showType=1" style="padding:10px">${item.address}</a>`
+    });
       this.markerInstance.push(m);
-      let infoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -30), content: `<a href="androidamap://route?sourceApplication=softname&slat=${this.positionLnglat.lat}&slon=${this.positionLnglat.lng}&sname=当前位置&dlat=${item.lnglat[1]}&dlon=${item.lnglat[0]}&dname=${item.address}&dev=0&m=0&t=1&showType=1" style="padding:10px">${item.address}</a>` });
+      let content = `
+        <div>
+          ${item.phone?'<p style="padding: 0.15rem 0;">电话：<a href="tel:'+ item.phone +'">'+ item.phone +'</a></p>':''}
+          <p>地址：<a style="padding: 0.15rem 0;" href="androidamap://route?sourceApplication=softname&slat=${this.positionLnglat.lat}&slon=${this.positionLnglat.lng}&sname=当前位置&dlat=${item.lnglat[1]}&dlon=${item.lnglat[0]}&dname=${item.address}&dev=0&m=0&t=1&showType=1" style="padding:10px">${item.address}</a></p>
+        </div>
+      `
+      let infoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -30), content: content });
       AMap.event.addListener(m, 'click', (e) => {
         infoWindow.open(this.aMap, item.lnglat)
       })

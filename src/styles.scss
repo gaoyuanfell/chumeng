@@ -11,10 +11,12 @@ html,body{
 }
 
 body{
-  font-size: 0.24rem;
+  font-size: 0.12rem;
 }
 
 *,*::before,*::after{
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 

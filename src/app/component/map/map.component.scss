@@ -11,3 +11,11 @@
   height: 100%;
   display:block;
 }
+
+.amap-marker-label{
+  width: 4rem;
+  white-space: pre-line;
+  border-color: transparent;
+  background-color: white;
+  box-shadow: 0 2px 6px 0 rgba(114, 124, 245, .5);
+}

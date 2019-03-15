@@ -18,6 +18,7 @@
     <platform name="android">
         <allow-intent href="market:*" />
         <allow-intent href="androidamap:*" />
+        <allow-intent href="tel:*" />
         <icon density="ldpi" src="res/icon/android/icon-36-ldpi.png" />
         <icon density="mdpi" src="res/icon/android/icon-48-mdpi.png" />
         <icon density="hdpi" src="res/icon/android/icon-72-hdpi.png" />
