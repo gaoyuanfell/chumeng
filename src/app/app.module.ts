@@ -8,12 +8,14 @@ import { HomeComponent } from './home/home.component';
 import { MapComponent } from './component/map/map.component';
 import { MatModule } from './mat-module';
 import { FormsModule } from '@angular/forms';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MapComponent
+    MapComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
