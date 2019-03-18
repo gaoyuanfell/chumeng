@@ -5,12 +5,12 @@ import { MapComponent } from './component/map/map.component';
 import { IndexComponent } from './index/index.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   component: IndexComponent,
+  // },
   {
     path: '',
-    component: IndexComponent,
-  },
-  {
-    path: 'home',
     component: HomeComponent,
   },
   {

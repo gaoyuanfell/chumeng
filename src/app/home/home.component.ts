@@ -61,6 +61,25 @@ export class HomeComponent implements OnInit {
               text: '休息下准备去玩咯',
               finish: false,
             },
+            
+          ]
+        },
+        {
+          thing: '行程开始',
+          data: '2019-4-04 09:30',
+          detail:[
+            {
+              text: '拙政园',
+              finish: false,
+            },
+            {
+              text: '苏州博物馆',
+              finish: false,
+            },
+            {
+              text: '平江历史街区',
+              finish: false,
+            },
           ]
         }
       ],
@@ -68,11 +87,38 @@ export class HomeComponent implements OnInit {
     {
       title:'第二天',
       events:[
-
+        {
+          thing: '行程开始',
+          data: '2019-4-05 09:30',
+          detail:[
+            {
+              text: '留园',
+              finish: false,
+            },
+            {
+              text: '山塘街',
+              finish: false,
+            },
+            {
+              text: '金鸡湖景区',
+              finish: false,
+            },
+            {
+              text: '撸串',
+              finish: false,
+            },
+          ]
+        },
       ]
     },
     {
       title:'第三天',
+      events:[
+
+      ]
+    },
+    {
+      title:'第四天',
       events:[
         {
           thing: '动车前往上海虹桥',

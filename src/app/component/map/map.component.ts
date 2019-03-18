@@ -16,16 +16,37 @@ export class MapComponent implements OnInit {
 
   markers = [
     {
-      address: '江苏省苏州市姑苏区平江街道拙政园',
-      lnglat: [120.629041, 31.324162]
+      address: '苏州市姑苏区东北街178号(拙政园)',
+      lnglat: [120.631204,31.323397]
     },
     {
-      address: '江苏省苏州市姑苏区平江街道东北街204号苏州博物馆',
-      lnglat: [120.627657, 31.322998]
+      address: '苏州市姑苏区东北街204号(苏州博物馆)',
+      lnglat: [120.627848,31.322573]
     },
     {
-      address: '江苏省苏州市姑苏区平江街道平江历史街区',
-      lnglat: [120.634486, 31.314001]
+      address: '苏州市姑苏区平江路与干将东路交叉口(平江历史街区)',
+      lnglat: [120.634869,31.309044]
+    },
+    {
+      address: '苏州市姑苏区广济路218号(山塘街)',
+      lnglat: [120.601144,31.318327]
+    },
+    {
+      address: '苏州市吴中区钟园路747号(金鸡湖景区)',
+      lnglat: [120.704358,31.323084]
+    },
+    {
+      address: '苏州市姑苏区观前(观前街)',
+      lnglat: [120.629518,31.311668]
+    },
+    {
+      address: '江苏省苏州市姑苏区吴门桥街道南环新村(南环东路小区北)南环新村二组团小区',
+      phone: '17186400373',
+      lnglat: [120.633333, 31.283277]
+    },
+    {
+      address: '苏州市姑苏区阊门外留园路338号(留园)',
+      lnglat: [120.59226, 31.315369]
     },
     // {
     //   address: '江苏省苏州市吴江区同里镇苏州同里古镇旅游区',
@@ -35,22 +56,46 @@ export class MapComponent implements OnInit {
     //   address: '江苏省苏州市昆山市周庄镇周庄古镇',
     //   lnglat: [120.851109, 31.115334]
     // },
+    // ----------------- 美食 ---------------
     {
-      address: '江苏省苏州市吴中区金鸡湖金鸡湖景区',
-      lnglat: [120.698344, 31.311124]
+      address: '苏州市姑苏区临顿路温家岸12号(哑巴生煎-临顿路分店)',
+      lnglat: [120.628400, 31.315131],
+      type:2
     },
     {
-      address: '江苏省苏州市吴中区月光码头步行街金鸡湖景区',
-      lnglat: [120.707259, 31.320194]
+      address: '苏州市姑苏区平江路115号(桃花源记-平江店)',
+      lnglat: [120.633763, 31.314575],
+      type:2
     },
     {
-      address: '江苏省苏州市姑苏区观前街道观前街久泰商厦',
-      lnglat: [120.625678, 31.311214]
+      address: '苏州市姑苏区平江路邾长巷2号(鸡脚旮旯-邾长巷)',
+      lnglat: [120.634575, 31.311698],
+      type:2
     },
     {
-      address: '江苏省苏州市姑苏区吴门桥街道南环新村(南环东路小区北)南环新村二组团小区',
-      phone: '17186400373',
-      lnglat: [120.633333, 31.283277]
+      address: '苏州市姑苏区平江路68-76号(鱼食饭稻-平江店)',
+      lnglat: [120.634147, 31.312878],
+      type:2
+    },
+    {
+      address: '苏州市姑苏区平江路悬桥巷54-1号(阿木舂记-平江路悬桥巷店-悬桥巷内走10米)',
+      lnglat: [120.632970, 31.314934],
+      type:2
+    },
+    {
+      address: '苏州市姑苏区仓街15号(西北烧烤-仓街店)',
+      lnglat: [120.638144, 31.311306],
+      type:2
+    },
+    {
+      address: '苏州市姑苏区观前街碧凤坊13-19号2层(胖哥俩肉蟹煲-观前街店)',
+      lnglat: [120.629145, 31.311022],
+      type:2
+    },
+    {
+      address: '苏州市姑苏区碧凤坊西1-1号(亚马逊牛排自助餐厅-观前店)',
+      lnglat: [120.627358, 31.310623],
+      type:2
     },
   ]
 
@@ -100,10 +145,20 @@ export class MapComponent implements OnInit {
 
   addMarker() {
     this.markers.forEach((item) => {
-      let m = new AMap.Marker({
+      let mp:any = {
         map: this.aMap,
         position: item.lnglat,
-      })
+      }
+      if(item.type == 2){
+        mp.icon = new AMap.Icon({
+          size: new AMap.Size(25, 25/(51/70)),
+          image: '/assets/img/poi-marker-red.png',
+          imageSize: new AMap.Size(25, 25/(51/70)),
+          // imageOffset: new AMap.Pixel(-95, -3)
+        });
+        // mp.offset = new AMap.Pixel(-13, -30)
+      }
+      let m = new AMap.Marker(mp)
       m.setLabel({
         //修改label相对于maker的位置
         offset: new AMap.Pixel(0, 30),
