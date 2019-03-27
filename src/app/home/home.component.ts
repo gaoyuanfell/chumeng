@@ -61,7 +61,6 @@ export class HomeComponent implements OnInit {
               text: '休息下准备去玩咯',
               finish: false,
             },
-            
           ]
         },
         {
@@ -77,7 +76,7 @@ export class HomeComponent implements OnInit {
               finish: false,
             },
             {
-              text: '平江历史街区',
+              text: '金鸡湖',
               finish: false,
             },
           ]
@@ -100,10 +99,6 @@ export class HomeComponent implements OnInit {
               finish: false,
             },
             {
-              text: '金鸡湖景区',
-              finish: false,
-            },
-            {
               text: '撸串',
               finish: false,
             },
@@ -114,7 +109,20 @@ export class HomeComponent implements OnInit {
     {
       title:'第三天',
       events:[
-
+        {
+          thing: '行程开始',
+          data: '2019-4-06 08:00',
+          detail:[
+            {
+              text: '四号线人民南桥上地铁到终点站转725公交同里古镇石牌楼下',
+              finish: false,
+            },
+            {
+              text: '同里古镇',
+              finish: false,
+            },
+          ]
+        },
       ]
     },
     {

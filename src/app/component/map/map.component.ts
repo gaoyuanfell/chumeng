@@ -17,27 +17,27 @@ export class MapComponent implements OnInit {
   markers = [
     {
       address: '苏州市姑苏区东北街178号(拙政园)',
-      lnglat: [120.631204,31.323397]
+      lnglat: [120.629026,31.324165]
     },
     {
       address: '苏州市姑苏区东北街204号(苏州博物馆)',
-      lnglat: [120.627848,31.322573]
+      lnglat: [120.627648,31.322992]
     },
     {
       address: '苏州市姑苏区平江路与干将东路交叉口(平江历史街区)',
-      lnglat: [120.634869,31.309044]
+      lnglat: [120.634455,31.313927]
     },
     {
       address: '苏州市姑苏区广济路218号(山塘街)',
-      lnglat: [120.601144,31.318327]
+      lnglat: [120.600943,31.318276]
     },
     {
       address: '苏州市吴中区钟园路747号(金鸡湖景区)',
-      lnglat: [120.704358,31.323084]
+      lnglat: [120.700743,31.303492]
     },
     {
       address: '苏州市姑苏区观前(观前街)',
-      lnglat: [120.629518,31.311668]
+      lnglat: [120.625689,31.311215]
     },
     {
       address: '江苏省苏州市姑苏区吴门桥街道南环新村(南环东路小区北)南环新村二组团小区',
@@ -162,13 +162,13 @@ export class MapComponent implements OnInit {
       m.setLabel({
         //修改label相对于maker的位置
         offset: new AMap.Pixel(0, 30),
-        content: `<a href="androidamap://route?sourceApplication=softname&slat=${this.positionLnglat.lat}&slon=${this.positionLnglat.lng}&sname=当前位置&dlat=${item.lnglat[1]}&dlon=${item.lnglat[0]}&dname=${item.address}&dev=0&m=0&t=1&showType=1" style="padding:10px">${item.address}</a>`
-    });
+        content: `<a style="font-size: 0.05rem;" href="androidamap://route?sourceApplication=softname&slat=${this.positionLnglat.lat}&slon=${this.positionLnglat.lng}&sname=当前位置&dlat=${item.lnglat[1]}&dlon=${item.lnglat[0]}&dname=${item.address}&dev=0&m=0&t=1&showType=1" style="padding:10px">${item.address}</a>`
+      });
       this.markerInstance.push(m);
       let content = `
         <div>
-          ${item.phone?'<p style="padding: 0.15rem 0;">电话：<a href="tel:'+ item.phone +'">'+ item.phone +'</a></p>':''}
-          <p>地址：<a style="padding: 0.15rem 0;" href="androidamap://route?sourceApplication=softname&slat=${this.positionLnglat.lat}&slon=${this.positionLnglat.lng}&sname=当前位置&dlat=${item.lnglat[1]}&dlon=${item.lnglat[0]}&dname=${item.address}&dev=0&m=0&t=1&showType=1" style="padding:10px">${item.address}</a></p>
+          ${item.phone?'<p style="font-size: 0.05rem;">电话：<a href="tel:'+ item.phone +'">'+ item.phone +'</a></p>':''}
+          <p>地址：<a style="font-size: 0.05rem;" href="androidamap://route?sourceApplication=softname&slat=${this.positionLnglat.lat}&slon=${this.positionLnglat.lng}&sname=当前位置&dlat=${item.lnglat[1]}&dlon=${item.lnglat[0]}&dname=${item.address}&dev=0&m=0&t=1&showType=1" style="padding:10px">${item.address}</a></p>
         </div>
       `
       let infoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -30), content: content });
